@@ -1,0 +1,24 @@
+<%-include('../cabecalho.ejs')%>
+    <h1>Produtos</h1>
+    <a href="/produto/add">+ produto</a>
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td>Preço</td>
+            <td>Disponível</td>
+            <td>Foto</td>
+            <td>Ações</td>
+        </tr>
+      
+        <%for (const {nome, preco, disponivel, foto, id} of Produtos) {%>
+        <tr>
+            <td><%=nome%></td>
+            <td><%=preco%></td>
+            <td><%=disponivel%></td>
+            <td><%=foto%></td>
+            <td><a href="/produto/edt/<%=id%>">Editar</a>
+            <a href="/produto/del/<%=id%>">Excluir</a></td>
+        </tr>
+        <%}%>
+    </table>
+ <%-include('../rodape.ejs')%>

@@ -1,0 +1,33 @@
+<%-include('../cabecalho.ejs')%>
+<h1>Editar Produto</h1>
+<div>
+<a href="/produto/lst">Listar</a>
+</div>
+<div>
+    <form  method="post">
+       
+        <input type="hidden" name="id" 
+        value="<%=Produto.id%>"><br>
+
+        <label>Nome:</label>
+        <input type="text" name="nome" 
+        value="<%=Produto.nome%>"><br>
+
+        <label>Preço:</label>
+        <input type="number" name="preco" step="0.01" 
+        value="<%=Produto.preco%>"><br>
+
+        <label>Disponivel:</label>
+        <input type="checkbox" name="disponivel" 
+        value="true" <%= Produto.disponivel ? 'checked' : '' %>><br>
+
+        <label>Foto:</label>
+        <input type="text" name="foto" 
+        value="<%=Produto.foto%>"><br>
+
+        <button type="submit">Cadastrar</button>
+        
+    </form>
+</div>
+
+<%-include('../rodape.ejs')%>

@@ -1,0 +1,22 @@
+<%-include('../cabecalho.ejs')%>
+<h1>Adicionar Produto</h1>
+<div>
+<a href="/produto/lst">Listar</a>
+</div>
+<div>
+    <form  method="post">
+        <label>Nome:</label>
+        <input type="text" name="nome"><br>
+        <label>Preço:</label>
+        <input type="number" name="preco"  step="0.01"><br>
+        <label>Disponível:</label>
+        <input type="checkbox" name="disponivel" value="true"><br>
+        <label>Foto:</label>
+        <input type="file" name="foto"><br>
+        
+        <button type="submit">Cadastrar</button>
+        
+    </form>
+</div>
+
+<%-include('../rodape.ejs')%>
