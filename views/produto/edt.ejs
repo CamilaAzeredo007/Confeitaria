@@ -1,7 +1,7 @@
 <%-include('../cabecalho.ejs')%>
 <h1>Editar Produto</h1>
 <div>
-<a href="/produto/lst">Listar</a>
+<a href="/produto/edt">Editar</a>
 </div>
 <div>
     <form  method="post" enctype="multipart/form-data">
@@ -22,7 +22,7 @@
         value="true" <%= Produto.disponivel ? 'checked' : '' %>><br>
 
         <label>Nova Foto:</label>
-        <input type="file" name="foto" accept="image/*"><br>
+        <input type="file" name="foto" accept=".png,.jpg,.jpeg">
 
         <button type="submit">Cadastrar</button>
         

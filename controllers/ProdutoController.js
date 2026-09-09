@@ -1,5 +1,5 @@
 //importar o Model
-import Produto from '../models/produto.js'
+import Produto from '../models/Produto.js'
 
 export default class ProdutoController{
 
@@ -11,25 +11,24 @@ export default class ProdutoController{
         }
         
         this.add = async(req, res)=>{
-            //cria o Produto
-            let fotoEnviada
-           if(req.file!=null){
-            console.log(" foi")
-            fotoEnviada = req.file.buffer
-           }
-           else{
-            console.log("nao foi")
-            fotoEnviada = null
-           }
+            let fotoEnviada = null;
+            let tipoFoto = null;
+
+            if(req.file != null){
+            fotoEnviada = req.file.buffer;
+            tipoFoto = req.file.mimetype;
+        }
            
             await Produto.create({
                 nome: req.body.nome,
-                preco:req.body.preco,
-                disponivel:req.body.disponivel === 'true',
-                foto:fotoEnviada
+                preco: req.body.preco,
+                disponivel: req.body.disponivel === 'true',
+                foto: req.file ? req.file.buffer : null,
+                tipoFoto: req.file ? req.file.mimetype : null
             });
             res.redirect('/'+caminhoBase + 'add');
         }
+
         this.list = async(req, res)=>{
             const resultado = await Produto.find({})
             res.render(caminhoBase + 'lst', {Produtos:resultado})
@@ -46,6 +45,7 @@ export default class ProdutoController{
         this.openEdt = async(req, res)=>{
                 //passar quem eu quero editar (só ID)
             const id = req.params.id;
+        
             console.log(id)
             const produto = await Produto.findById(id) 
             console.log(produto)
@@ -58,11 +58,15 @@ export default class ProdutoController{
                 const dados = {
                 nome: req.body.nome,
                 preco: req.body.preco,
-                disponivel: req.body.disponivel === 'true',
-                foto: req.body.foto
+                disponivel: req.body.disponivel === 'true'
             };
 
-                await Produto.findByIdAndUpdate(req.params.id, dados);
+            if(req.file){
+            dados.foto = req.file.buffer;
+            dados.tipoFoto = req.file.mimetype;
+            }
+
+    await Produto.findByIdAndUpdate(req.params.id, dados);
 
                 res.redirect('/'+caminhoBase + 'lst');
             }
