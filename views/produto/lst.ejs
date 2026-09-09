@@ -9,16 +9,23 @@
             <td>Foto</td>
             <td>Ações</td>
         </tr>
-      
+
         <%for (const {nome, preco, disponivel, foto, id} of Produtos) {%>
-        <tr>
-            <td><%=nome%></td>
-            <td><%=preco%></td>
-            <td><%=disponivel%></td>
-            <td><%=foto%></td>
-            <td><a href="/produto/edt/<%=id%>">Editar</a>
-            <a href="/produto/del/<%=id%>">Excluir</a></td>
-        </tr>
-        <%}%>
+            <tr>
+                <td>
+                    <%=nome%>
+                </td>
+                <td>
+                    <%=preco%>
+                </td>
+                <td>
+                    <%=disponivel%>
+                </td>
+                <td><img src="<%=foto%>" width="150" height="150"></td>
+                <td><a href="/produto/edt/<%=id%>">Editar</a>
+                    <a href="/produto/del/<%=id%>">Excluir</a>
+                </td>
+            </tr>
+            <%}%>
     </table>
- <%-include('../rodape.ejs')%>
+    <%-include('../rodape.ejs')%>

@@ -6,8 +6,14 @@ const controle = new ProdutoController();
 
 const caminhobase = 'produto/'
 
+import multer from 'multer';
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+
 router.get('/' + caminhobase + 'add', controle.openAdd)
-router.post('/' + caminhobase + 'add', controle.add)
+router.post('/' + caminhobase + 'add', upload.single('foto'), controle.add)
 router.get('/' + caminhobase + 'lst', controle.list)
 router.post('/' + caminhobase + 'lst', controle.find)
 router.get('/' + caminhobase + 'del/:id', controle.del)

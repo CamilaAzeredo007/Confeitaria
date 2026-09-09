@@ -4,7 +4,7 @@
 <a href="/produto/lst">Listar</a>
 </div>
 <div>
-    <form  method="post">
+    <form  method="post" enctype="multipart/form-data">
        
         <input type="hidden" name="id" 
         value="<%=Produto.id%>"><br>
@@ -21,9 +21,8 @@
         <input type="checkbox" name="disponivel" 
         value="true" <%= Produto.disponivel ? 'checked' : '' %>><br>
 
-        <label>Foto:</label>
-        <input type="text" name="foto" 
-        value="<%=Produto.foto%>"><br>
+        <label>Nova Foto:</label>
+        <input type="file" name="foto" accept="image/*"><br>
 
         <button type="submit">Cadastrar</button>
         

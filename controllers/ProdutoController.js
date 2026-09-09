@@ -12,12 +12,21 @@ export default class ProdutoController{
         
         this.add = async(req, res)=>{
             //cria o Produto
+            let fotoEnviada
+           if(req.file!=null){
+            console.log(" foi")
+            fotoEnviada = req.file.buffer
+           }
+           else{
+            console.log("nao foi")
+            fotoEnviada = null
+           }
            
             await Produto.create({
                 nome: req.body.nome,
                 preco:req.body.preco,
                 disponivel:req.body.disponivel === 'true',
-                foto:req.body.foto
+                foto:fotoEnviada
             });
             res.redirect('/'+caminhoBase + 'add');
         }
@@ -62,8 +71,7 @@ export default class ProdutoController{
                 await Produto.findByIdAndDelete(req.params.id)
                 res.redirect('/'+caminhoBase + 'lst');
             
-        }
-
+            }
         
 
     }

@@ -1,22 +1,22 @@
 <%-include('../cabecalho.ejs')%>
-<h1>Adicionar Produto</h1>
-<div>
-<a href="/produto/lst">Listar</a>
-</div>
-<div>
-    <form  method="post">
-        <label>Nome:</label>
-        <input type="text" name="nome"><br>
-        <label>Preço:</label>
-        <input type="number" name="preco"  step="0.01"><br>
-        <label>Disponível:</label>
-        <input type="checkbox" name="disponivel" value="true"><br>
-        <label>Foto:</label>
-        <input type="file" name="foto"><br>
-        
-        <button type="submit">Cadastrar</button>
-        
-    </form>
-</div>
+    <h1>Adicionar Produto</h1>
+    <div>
+        <a href="/produto/lst">Listar</a>
+    </div>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            <label>Nome:</label>
+            <input type="text" id="nome" name="nome"><br>
+            <label>Preço:</label>
+            <input type="number" id="preco" name="preco" step="0.01"><br>
+            <label>Disponível:</label>
+            <input type="checkbox" id="disponivel" name="disponivel" value="true"><br>
+            <label for="fotoprod">Foto:</label>
+            <input type="file" id="foto" name="foto"><br>
 
-<%-include('../rodape.ejs')%>
+            <button type="submit">Cadastrar</button>
+
+        </form>
+    </div>
+
+    <%-include('../rodape.ejs')%>
