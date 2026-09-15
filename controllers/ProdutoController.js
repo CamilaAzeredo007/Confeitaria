@@ -1,5 +1,6 @@
 //importar o Model
 import Produto from '../models/Produto.js'
+import Categoria from '../models/Categoria.js'
 
 export default class ProdutoController{
 
@@ -7,7 +8,8 @@ export default class ProdutoController{
         this.caminhoBase = caminhoBase
     
         this.openAdd = async(req, res)=>{
-            res.render(caminhoBase + "add")
+            const resultado = await Categoria.find({});
+            res.render(caminhoBase + "add", {Categorias: resultado})
         }
         
         this.add = async(req, res)=>{
@@ -15,23 +17,30 @@ export default class ProdutoController{
             let tipoFoto = null;
 
             if(req.file != null){
-            fotoEnviada = req.file.buffer;
-            tipoFoto = req.file.mimetype;
-        }
+                fotoEnviada = req.file.buffer;
+                tipoFoto = req.file.mimetype;
+            }
+
+            let pcategoria = null;
+
+            if(req.body.categoria != null){
+                pcategoria = await Categoria.findById(req.body.categoria)
+            }
            
             await Produto.create({
                 nome: req.body.nome,
                 preco: req.body.preco,
                 disponivel: req.body.disponivel === 'true',
                 foto: req.file ? req.file.buffer : null,
-                tipoFoto: req.file ? req.file.mimetype : null
+                tipoFoto: req.file ? req.file.mimetype : null,
+                categoria: pcategoria
             });
             res.redirect('/'+caminhoBase + 'add');
         }
 
         this.list = async(req, res)=>{
-            const resultado = await Produto.find({})
-            res.render(caminhoBase + 'lst', {Produtos:resultado})
+            const resultado = await Produto.find({}).populate('categoria');
+            res.render(caminhoBase + 'lst', {Produtos:resultado});
         }
 
         this.find = async(req, res)=>{
@@ -42,14 +51,14 @@ export default class ProdutoController{
             res.render(caminhoBase + 'lst', {Produtos:resultado})
         }
     
-        this.openEdt = async(req, res)=>{
+            this.openEdt = async(req, res)=>{
                 //passar quem eu quero editar (só ID)
-            const id = req.params.id;
+                const id = req.params.id;
         
-            console.log(id)
-            const produto = await Produto.findById(id) 
-            console.log(produto)
-            res.render(caminhoBase + "edt", 
+                console.log(id)
+                const produto = await Produto.findById(id) 
+                console.log(produto)
+                res.render(caminhoBase + "edt", 
                     {Produto:produto})
             }
     
@@ -66,7 +75,7 @@ export default class ProdutoController{
             dados.tipoFoto = req.file.mimetype;
             }
 
-    await Produto.findByIdAndUpdate(req.params.id, dados);
+            await Produto.findByIdAndUpdate(req.params.id, dados);
 
                 res.redirect('/'+caminhoBase + 'lst');
             }

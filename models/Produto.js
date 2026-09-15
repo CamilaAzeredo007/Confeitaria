@@ -22,6 +22,12 @@ const Produto = conexao.Schema({
     disponivel: {
         type: Boolean,
         required: true
+    },
+
+    categoria: {
+        type: conexao.Types.ObjectId,
+        ref: "Categoria",
+        required: false
     }
 })
 

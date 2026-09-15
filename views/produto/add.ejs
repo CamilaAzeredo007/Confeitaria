@@ -14,6 +14,16 @@
             <label for="fotoprod">Foto:</label>
             <input type="file" id="foto" name="foto"><br>
 
+            <label for="categoria" class="form-label">Categoria</label>
+            <select name="categoria" id="categoria" class="form-control">
+            <option value="">Selecione</option>
+            <%Categorias.forEach(function(c){ %>
+                <option value="<%=c.id%>">
+                <%=c.nome%>
+                </option>
+            <%})%>
+            </select>
+
             <button type="submit">Cadastrar</button>
 
         </form>

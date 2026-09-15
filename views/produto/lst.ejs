@@ -5,32 +5,33 @@
 <a href="/produto/add">+ produto</a>
 
 <table>
-    <tr>
+    <tr>   
         <td>Nome</td>
         <td>Preço</td>
         <td>Disponível</td>
         <td>Foto</td>
+        <td>Categoria</td>
         <td>Ações</td>
     </tr>
 
-    <% for (const {nome, preco, disponivel, foto, tipoFoto, id} of Produtos) { %>
+    <% Produtos.forEach(function(p) { %>
         <tr>
             <td>
-                <%= nome %>
+                <%=p.nome%>
             </td>
 
             <td>
-                <%= preco %>
+               R$ <%= Number(p.preco).toFixed(2).replace('.', ',') %>
             </td>
 
             <td>
-                <%= disponivel %>
+                <%=p.disponivel %>
             </td>
 
             <td>
-                <% if (foto) { %>
+                <% if (p.foto) { %>
                     <img 
-                        src="data:<%= tipoFoto %>;base64,<%= foto.toString('base64') %>"
+                        src="data:<%= p.tipoFoto %>;base64,<%= p.foto.toString('base64') %>"
                         width="150"
                         height="150"
                     >
@@ -38,11 +39,15 @@
             </td>
 
             <td>
-                <a href="/produto/edt/<%= id %>">Editar</a>
-                <a href="/produto/del/<%= id %>">Excluir</a>
+                <%=p.categoria != null ? p.categoria.nome: ""%>
+            </td>
+
+            <td>
+                <a href="/produto/edt/<%= p.id %>">Editar</a>
+                <a href="/produto/del/<%= p.id %>">Excluir</a>
             </td>
         </tr>
-    <% } %>
+    <% }) %>
 </table>
 
 <%-include('../rodape.ejs')%>

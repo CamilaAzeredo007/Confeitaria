@@ -1,5 +1,5 @@
 //importar o Model
-import Categoria from '../models/categoria.js'
+import Categoria from '../models/Categoria.js'
 
 export default class CategoriaController{
 
@@ -49,7 +49,7 @@ export default class CategoriaController{
         
         }
 
-         this.del = async(req, res)=>{
+        this.del = async(req, res)=>{
         await Categoria.findByIdAndDelete(req.params.id)
         res.redirect('/'+caminhoBase + 'lst');
         
