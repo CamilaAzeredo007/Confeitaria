@@ -1,30 +1,50 @@
 <%-include('../cabecalho.ejs')%>
 <h1>Editar Produto</h1>
 <div>
-<a href="/produto/edt">Editar</a>
+<a href="/produto/edt/<%=Produto.id%>">Editar</a>
 </div>
 <div>
     <form  method="post" enctype="multipart/form-data">
-       
-        <input type="hidden" name="id" 
-        value="<%=Produto.id%>"><br>
 
-        <label>Nome:</label>
-        <input type="text" name="nome" 
-        value="<%=Produto.nome%>"><br>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" name="nome" 
+            value="<%=Produto.nome%>"><br>
+        </div>
 
-        <label>Preço:</label>
-        <input type="number" name="preco" step="0.01" 
-        value="<%=Produto.preco%>"><br>
+        <div class="mb-3">
+            <label for="preco" class="form-label">Preço:</label>
+            <input type="number" name="preco" step="0.01" 
+            value="<%=Produto.preco%>"><br>
+        </div>
 
-        <label>Disponivel:</label>
-        <input type="checkbox" name="disponivel" 
-        value="true" <%= Produto.disponivel ? 'checked' : '' %>><br>
+        <div class="mb-3">
+            <label for="disponivel" class="form-label">Disponivel:</label>
+            <input type="checkbox" name="disponivel" 
+            value="true" <%= Produto.disponivel ? 'checked' : '' %>><br>
+        </div>
 
-        <label>Nova Foto:</label>
-        <input type="file" name="foto" accept=".png,.jpg,.jpeg">
+        <div class="mb-3">
+            <label for="fotoN" class="form-label">Nova Foto:</label>
+            <input type="file" name="foto" accept=".png,.jpg,.jpeg">
+        </div>
 
-        <button type="submit">Cadastrar</button>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoria</label>
+            <select name="categoria" id="categoria" class="form-control">
+                <option value="<%=Produto.categoria%>">Selecione</option>
+                <%Categorias.forEach(function(c) { %>
+                    <option value="<%=c.id%>">
+                        <%= (Produto.categoria && c.id.toString() === Produto.categoria.toString())
+                         ? 'selected': '' %>
+                    >
+                        <%=c.nome%>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <button type="submit">Salvar Alterações</button>
         
     </form>
 </div>

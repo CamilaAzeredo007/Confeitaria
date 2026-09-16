@@ -54,30 +54,38 @@ export default class ProdutoController{
             this.openEdt = async(req, res)=>{
                 //passar quem eu quero editar (só ID)
                 const id = req.params.id;
-        
-                console.log(id)
-                const produto = await Produto.findById(id) 
-                console.log(produto)
+                const resultado = await Produto.findById(req.params.id)
+                //busco a entidade relacionada
+                const pcategorias = await Categoria.find({});
+                //devolvo TAMBÉM a lista da entidade relacionada
+                
                 res.render(caminhoBase + "edt", 
-                    {Produto:produto})
+                    {Produto:resultado, Categorias: pcategorias})
             }
     
     
             this.edt = async(req, res)=>{
+                let pcategoria = null;
+                if(req.body.time!=null)
+                {
+                    pcategoria = await Categoria.findById(req.body.categoria)
+                }
+
                 const dados = {
                 nome: req.body.nome,
                 preco: req.body.preco,
-                disponivel: req.body.disponivel === 'true'
-            };
+                disponivel: req.body.disponivel === 'true',
+                categoria: pcategoria
+                };
 
-            if(req.file){
-            dados.foto = req.file.buffer;
-            dados.tipoFoto = req.file.mimetype;
-            }
+                if(req.file){
+                    dados.foto = req.file.buffer;
+                    dados.tipoFoto = req.file.mimetype;
+                }
 
-            await Produto.findByIdAndUpdate(req.params.id, dados);
+                await Produto.findByIdAndUpdate(req.params.id, dados);
 
-                res.redirect('/'+caminhoBase + 'lst');
+                    res.redirect('/'+caminhoBase + 'lst');
             }
     
             this.del = async(req, res)=>{
