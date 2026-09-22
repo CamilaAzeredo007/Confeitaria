@@ -1,0 +1,34 @@
+<%-include('../cabecalho.ejs')%>
+    <h1>Clientes</h1>
+    <div>
+        <form action="
+        " method="post">
+        <input type="text" name="filtro"
+         id="" placeholder="digite o nome do cliente">
+         <button type="submit">Pesquisar</button>
+    </form>
+    </div>
+    <a href="/cliente/add">+ Cliente</a>
+    <table>
+        <tr>
+            <td>Nome</td>
+            <td>Endereço</td>
+            <td>CEP</td>
+            <td>Telefone</td>
+            <td>CPF</td>
+            <td>Ações</td>
+        </tr>
+      
+        <%Clientes.forEach(function(cliente) { %>
+        <tr>
+            <td><%=cliente.nome%></td>
+            <td><%=cliente.endereco%></td>
+            <td><%=cliente.cep%></td>
+            <td><%=cliente.telefone%></td>
+            <td><%=cliente.cpf%></td>
+            <td><a href="/cliente/edt/<%=cliente.id%>">Editar</a>
+            <a href="/cliente/del/<%=cliente.id%>">Excluir</a></td>
+        </tr>
+        <%})%>
+    </table>
+ <%-include('../rodape.ejs')%>

@@ -1,5 +1,4 @@
-
- export default class GeralController {
+export default class GeralController {
  
     constructor() {
         this.home = async (req, res) => {
@@ -16,5 +15,5 @@
         };
 
     }
- }
+}
 

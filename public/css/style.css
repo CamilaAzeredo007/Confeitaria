@@ -1,128 +1,237 @@
+/* ============================================
+   Confeitaria • Painel Administrativo
+   Paleta em tons pastel
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  /* Paleta pastel */
+  --bg: #FFF8F3;
+  --surface: #FFFFFF;
+  --surface-soft: #FFFBF7;
+
+  --text: #5C4B51;
+  --text-muted: #8C7A80;
+  --heading: #9C5470;
+
+  --border: #F0DCE2;
+  --border-soft: #F6E9EE;
+
+  --pink: #F8D7E3;
+  --lavanda: #E1D4F0;
+  --lavanda-dark: #C7ACE0;
+  --menta: #C9EAD9;
+  --amanteigado: #FFF0BF;
+
+  /* Cores extras — úteis para badges, status de pedidos, alertas etc. */
+  --pessego: #FDE4D3;
+  --rosa-forte: #E8A9C0;
+
+  --shadow: 0 4px 20px rgba(216, 163, 184, 0.18);
+  --shadow-soft: 0 2px 8px rgba(216, 163, 184, 0.15);
+
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
 /* Estilos Gerais */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .footer{
-    padding: 20px;
-  }
-  
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.container {
+  background-color: var(--surface);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-soft);
+  width: 80%;
+  max-width: 100%;
+}
+
+h1 {
+  font-family: 'Quicksand', 'Poppins', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: var(--heading);
+  margin-bottom: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* Estilos do Menu de Navegação */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu ul li {
+  text-align: center;
+}
+
+.menu ul li a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background-color: var(--surface-soft);
+  color: var(--heading);
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu ul li a:hover,
+.menu ul li a.active {
+  background-color: var(--pink);
+  color: #7A2E3D;
+}
+
+/* Estilos do Formulário */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--surface-soft);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--lavanda-dark);
+  box-shadow: 0 0 0 3px rgba(199, 172, 224, 0.25);
+  background-color: var(--surface);
+}
+
+/* Estilos dos Botões */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: var(--menta);
+  color: #2F5A41;
+}
+
+.btn.edit {
+  background-color: var(--amanteigado);
+  color: #6B5312;
+}
+
+.btn.add {
+  background-color: var(--lavanda);
+  color: #4B3771;
+}
+
+.btn.delete {
+  background-color: var(--pink);
+  color: #7A2E3D;
+}
+
+.btn.cancelar {
+  background-color: #E2DDE8;
+  color: #4F4A5C;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn:focus-visible,
+.menu ul li a:focus-visible {
+  outline: 2px solid var(--lavanda-dark);
+  outline-offset: 2px;
+}
+
+/* Estilos da Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+table th, table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 14px;
+}
+
+table th {
+  background-color: var(--pink);
+  color: #7A2E3D;
+  font-weight: 600;
+}
+
+table tr:hover {
+  background-color: var(--surface-soft);
+}
+
+.search {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
   .container {
-    background-color: #fff;
+    width: 92%;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 100%;
   }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+}
+
+/* Respeita preferência por menos animações */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
   }
-  
-  /* Estilos do Menu de Navegação */
-  .menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: line;
-    gap: 10px;
-  }
-  
-  .menu ul li {
-    text-align: center;
-  }
-  
-  /* Estilos do Formulário */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Estilos dos Botões */
-  .btn {
-    display: inline-block;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-  .btn {
-    background-color: #28a745;
-    color: #fff;
-  }
-  
-  .btn.edit {
-    background-color: #ffc107;
-    color: #000;
-  }
-  
-  .btn.add {
-    color: #fff;
-    background-color:#1c0df3
-  }
-  
-  .btn.delete {
-    background-color: #dc3545;
-    color: #fff;
-  }
-  
-  .btn.cancelar {
-    background-color: #6c757d;
-    color: #fff;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
-  /* Estilos da Tabela */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  table th, table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  table th {
-    background-color: #f8f9fa;
-  }
-  
-  table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .search
-  {
-    text-align: right;
-  }
+}

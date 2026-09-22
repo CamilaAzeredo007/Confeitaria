@@ -21,7 +21,7 @@ export default class ProdutoController{
                 tipoFoto = req.file.mimetype;
             }
 
-            let pcategoria = null;
+            let pcategoria;
 
             if(req.body.categoria != null){
                 pcategoria = await Categoria.findById(req.body.categoria)

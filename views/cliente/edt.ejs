@@ -1,0 +1,34 @@
+<%-include('../cabecalho.ejs')%>
+<h1>Editar Cliente</h1>
+<div>
+<a href="/cliente/lst">Listar</a>
+</div>
+<div>
+    <form  method="post">
+       
+        <label>Nome:</label>
+        <input type="text" name="nome" 
+        value="<%=Cliente.nome%>"><br>
+
+        <label>Endereço:</label>
+        <input type="text" name="endereco"  
+        value="<%=Cliente.endereco%>"><br>
+
+        <label>CEP:</label>
+        <input type="text" name="cep"  
+        value="<%=Cliente.cep%>"><br>
+
+        <label>Telefone:</label>
+        <input type="text" name="telefone"  
+        value="<%=Cliente.telefone%>"><br>
+
+        <label>CPF:</label>
+        <input type="text" name="cpf"  
+        value="<%=Cliente.cpf%>"><br>
+
+        <button type="submit">Salvar Alterações</button>
+        
+    </form>
+</div>
+
+<%-include('../rodape.ejs')%>

@@ -1,10 +1,12 @@
 import conexao from '../config/conexao.js'
 
 const Pedido = conexao.Schema({
-    cliente: {type:String, required:true},
-    id:{type:String, required:true},
+    cliente: { type: conexao.Types.ObjectId,
+        ref: "Cliente",
+        required: false},
+    nome:{type:String, required:true},
     status:{type:String, required:true},
-    valorTotal:{type:Decimal, required:true},
+    valorTotal:{type:Number, required:true},
     formaPagamento:{type:String, required:true},
     dataPedido:{type:Date, required:true}
 })

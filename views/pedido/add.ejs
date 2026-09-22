@@ -1,0 +1,43 @@
+<%-include('../cabecalho.ejs')%>
+<h1>Adicionar Pedido</h1>
+<div>
+<a href="/pedido/lst">Listar</a>
+</div>
+<div>
+    <form  method="post">
+        <label>Nome:</label>
+        <input type="text" name="nome"><br>
+
+        <label>Status:</label>
+        <input type="text" name="status"><br>
+
+        <label>Valor Total:</label>
+        <input type="number" name="valorTotal" step="0.01"><br>
+
+        <label>Forma de Pagamento:</label>
+        <select name="formaPagamento">
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="PIX">PIX</option>
+        </select><br>
+
+        <label>Data do Pedido:</label>
+        <input type="date" name="dataPedido"><br>
+
+        <label for="cliente" class="form-label">Cliente</label>
+            <select name="cliente" id="cliente" class="form-control">
+            <option value="">Selecione</option>
+            <%Clientes.forEach(function(c){ %>
+                <option value="<%=c.id%>">
+                <%=c.nome%>
+                </option>
+            <%})%>
+            </select>
+
+        <button type="submit">Cadastrar</button>
+        
+    </form>
+</div>
+
+<%-include('../rodape.ejs')%>
