@@ -1,58 +1,51 @@
 <%-include('../cabecalho.ejs')%>
-
 <h1>Produtos</h1>
 
-<div>
-        <form action="
-        " method="post">
-        <input type="text" name="filtro"
-         id="" placeholder="digite o nome do produto">
-         <button type="submit">Pesquisar</button>
+<div class="search">
+    <form action="" method="post">
+        <input type="text" name="filtro" placeholder="digite o nome do produto">
+        <button type="submit" class="btn">Pesquisar</button>
     </form>
+</div>
 
-<a href="/produto/add">+ produto</a>
+<div class="menu">
+    <ul>
+        <li><a href="/produto/add" class="btn add">+ Produto</a></li>
+    </ul>
+</div>
 
 <table>
-    <tr>   
-        <td>Nome</td>
-        <td>Preço</td>
-        <td>Disponível</td>
-        <td>Foto</td>
-        <td>Categoria</td>
-        <td>Ações</td>
+    <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Disponível</th>
+        <th>Foto</th>
+        <th>Categoria</th>
+        <th>Ações</th>
     </tr>
 
     <% Produtos.forEach(function(p) { %>
         <tr>
-            <td>
-                <%=p.nome%>
-            </td>
+            <td><%=p.nome%></td>
 
-            <td>
-               R$ <%= Number(p.preco).toFixed(2).replace('.', ',') %>
-            </td>
+            <td>R$ <%= Number(p.preco).toFixed(2).replace('.', ',') %></td>
 
-            <td>
-                <%=p.disponivel %>
-            </td>
+            <td><%=p.disponivel ? 'Sim' : 'Não' %></td>
 
             <td>
                 <% if (p.foto) { %>
-                    <img 
+                    <img
+                        class="foto-thumb"
                         src="data:<%= p.tipoFoto %>;base64,<%= p.foto.toString('base64') %>"
-                        width="150"
-                        height="150"
                     >
                 <% } %>
             </td>
 
-            <td>
-                <%=p.categoria != null ? p.categoria.nome: ""%>
-            </td>
+            <td><%=p.categoria != null ? p.categoria.nome: ""%></td>
 
             <td>
-                <a href="/produto/edt/<%= p.id %>">Editar</a>
-                <a href="/produto/del/<%= p.id %>">Excluir</a>
+                <a href="/produto/edt/<%= p.id %>" class="btn edit">Editar</a>
+                <a href="/produto/del/<%= p.id %>" class="btn delete">Excluir</a>
             </td>
         </tr>
     <% }) %>

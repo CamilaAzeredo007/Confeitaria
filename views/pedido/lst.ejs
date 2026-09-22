@@ -1,36 +1,44 @@
 <%-include('../cabecalho.ejs')%>
-    <h1>Pedidos</h1>
-    <div>
-        <form action="
-        " method="post">
-        <input type="text" name="filtro"
-         id="" placeholder="digite o nome">
-         <button type="submit">Pesquisar</button>
+<h1>Pedidos</h1>
+
+<div class="search">
+    <form action="" method="post">
+        <input type="text" name="filtro" placeholder="digite o nome">
+        <button type="submit" class="btn">Pesquisar</button>
     </form>
-    </div>
-    <a href="/pedido/add">+ Pedido</a>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Status</td>
-            <td>Valor Total</td>
-            <td>Forma de Pagamento</td>
-            <td>Data do Pedido</td>
-            <td>Cliente que fez o pedido</td>
-            <td>Ações</td>
-        </tr>
-      
-        <%Pedidos.forEach (function(Pedido) {%>
-        <tr>
-            <td><%=Pedido.nome%></td>
-            <td><%=Pedido.status%></td>
-            <td><%=Pedido.valorTotal%></td>
-            <td><%=Pedido.formaPagamento%></td>
-            <td><%=Pedido.dataPedido.toISOString().split('T')[0]%></td>
-            <td><%=Pedido.cliente && Pedido.cliente.nome ? Pedido.cliente.nome: ""%></td>
-            <td><a href="/pedido/edt/<%=Pedido.id%>">Editar</a>
-            <a href="/pedido/del/<%=Pedido.id%>">Excluir</a></td>
-        </tr>
-        <%})%>
-    </table>
- <%-include('../rodape.ejs')%>
+</div>
+
+<div class="menu">
+    <ul>
+        <li><a href="/pedido/add" class="btn add">+ Pedido</a></li>
+    </ul>
+</div>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Status</th>
+        <th>Valor Total</th>
+        <th>Forma de Pagamento</th>
+        <th>Data do Pedido</th>
+        <th>Cliente que fez o pedido</th>
+        <th>Ações</th>
+    </tr>
+
+    <%Pedidos.forEach (function(Pedido) {%>
+    <tr>
+        <td><%=Pedido.nome%></td>
+        <td><%=Pedido.status%></td>
+        <td><%=Pedido.valorTotal%></td>
+        <td><%=Pedido.formaPagamento%></td>
+        <td><%=Pedido.dataPedido.toISOString().split('T')[0]%></td>
+        <td><%=Pedido.cliente && Pedido.cliente.nome ? Pedido.cliente.nome: ""%></td>
+        <td>
+            <a href="/pedido/edt/<%=Pedido.id%>" class="btn edit">Editar</a>
+            <a href="/pedido/del/<%=Pedido.id%>" class="btn delete">Excluir</a>
+        </td>
+    </tr>
+    <%})%>
+</table>
+
+<%-include('../rodape.ejs')%>

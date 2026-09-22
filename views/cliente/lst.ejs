@@ -1,34 +1,42 @@
 <%-include('../cabecalho.ejs')%>
-    <h1>Clientes</h1>
-    <div>
-        <form action="
-        " method="post">
-        <input type="text" name="filtro"
-         id="" placeholder="digite o nome do cliente">
-         <button type="submit">Pesquisar</button>
+<h1>Clientes</h1>
+
+<div class="search">
+    <form action="" method="post">
+        <input type="text" name="filtro" placeholder="digite o nome do cliente">
+        <button type="submit" class="btn">Pesquisar</button>
     </form>
-    </div>
-    <a href="/cliente/add">+ Cliente</a>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Endereço</td>
-            <td>CEP</td>
-            <td>Telefone</td>
-            <td>CPF</td>
-            <td>Ações</td>
-        </tr>
-      
-        <%Clientes.forEach(function(cliente) { %>
-        <tr>
-            <td><%=cliente.nome%></td>
-            <td><%=cliente.endereco%></td>
-            <td><%=cliente.cep%></td>
-            <td><%=cliente.telefone%></td>
-            <td><%=cliente.cpf%></td>
-            <td><a href="/cliente/edt/<%=cliente.id%>">Editar</a>
-            <a href="/cliente/del/<%=cliente.id%>">Excluir</a></td>
-        </tr>
-        <%})%>
-    </table>
- <%-include('../rodape.ejs')%>
+</div>
+
+<div class="menu">
+    <ul>
+        <li><a href="/cliente/add" class="btn add">+ Cliente</a></li>
+    </ul>
+</div>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>CEP</th>
+        <th>Telefone</th>
+        <th>CPF</th>
+        <th>Ações</th>
+    </tr>
+
+    <%Clientes.forEach(function(cliente) { %>
+    <tr>
+        <td><%=cliente.nome%></td>
+        <td><%=cliente.endereco%></td>
+        <td><%=cliente.cep%></td>
+        <td><%=cliente.telefone%></td>
+        <td><%=cliente.cpf%></td>
+        <td>
+            <a href="/cliente/edt/<%=cliente.id%>" class="btn edit">Editar</a>
+            <a href="/cliente/del/<%=cliente.id%>" class="btn delete">Excluir</a>
+        </td>
+    </tr>
+    <%})%>
+</table>
+
+<%-include('../rodape.ejs')%>

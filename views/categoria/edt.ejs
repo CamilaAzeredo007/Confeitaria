@@ -1,19 +1,21 @@
 <%-include('../cabecalho.ejs')%>
 <h1>Editar Categoria</h1>
-<div>
-<a href="/categoria/lst">Listar</a>
+
+<div class="menu">
+    <ul>
+        <li><a href="/categoria/lst">Listar</a></li>
+    </ul>
 </div>
-<div>
-    <form  method="post">
-       
-        <input type="hidden" name="id" 
-        value="<%=Categoria.id%>"><br>
-        <label>Nome:</label>
-        <input type="text" name="nome" 
-        value="<%=Categoria.nome%>"><br>
-        <button type="submit">Salvar Alterações</button>
-        
-    </form>
-</div>
+
+<form method="post">
+    <input type="hidden" name="id" value="<%=Categoria.id%>">
+
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="<%=Categoria.nome%>">
+    </div>
+
+    <button type="submit" class="btn edit">Salvar Alterações</button>
+</form>
 
 <%-include('../rodape.ejs')%>

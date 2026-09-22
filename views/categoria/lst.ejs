@@ -1,26 +1,34 @@
 <%-include('../cabecalho.ejs')%>
-    <h1>Categorias</h1>
-    <div>
-        <form action="
-        " method="post">
-        <input type="text" name="filtro"
-         id="" placeholder="digite o nome">
-         <button type="submit">Pesquisar</button>
+<h1>Categorias</h1>
+
+<div class="search">
+    <form action="" method="post">
+        <input type="text" name="filtro" placeholder="digite o nome">
+        <button type="submit" class="btn">Pesquisar</button>
     </form>
-    </div>
-    <a href="/categoria/add">+ Categoria</a>
-    <table>
-        <tr>
-            <td>Nome</td>
-            <td>Ações</td>
-        </tr>
-      
-        <%for (const {id, nome} of Categorias) {%>
-        <tr>
-            <td><%=nome%></td>
-            <td><a href="/categoria/edt/<%=id%>">Editar</a>
-            <a href="/categoria/del/<%=id%>">Excluir</a></td>
-        </tr>
-        <%}%>
-    </table>
- <%-include('../rodape.ejs')%>
+</div>
+
+<div class="menu">
+    <ul>
+        <li><a href="/categoria/add" class="btn add">+ Categoria</a></li>
+    </ul>
+</div>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+
+    <%for (const {id, nome} of Categorias) {%>
+    <tr>
+        <td><%=nome%></td>
+        <td>
+            <a href="/categoria/edt/<%=id%>" class="btn edit">Editar</a>
+            <a href="/categoria/del/<%=id%>" class="btn delete">Excluir</a>
+        </td>
+    </tr>
+    <%}%>
+</table>
+
+<%-include('../rodape.ejs')%>

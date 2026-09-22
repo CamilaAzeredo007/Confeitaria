@@ -141,6 +141,42 @@ h1 {
   background-color: var(--surface);
 }
 
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--surface-soft);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: var(--lavanda-dark);
+  box-shadow: 0 0 0 3px rgba(199, 172, 224, 0.25);
+  background-color: var(--surface);
+}
+
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+  accent-color: var(--rosa-forte);
+}
+
+/* Miniatura de foto na tabela de produtos */
+.foto-thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
 /* Estilos dos Botões */
 .btn {
   display: inline-block;
@@ -216,9 +252,105 @@ table tr:hover {
   background-color: var(--surface-soft);
 }
 
+/* Coluna de Ações */
+table th:last-child,
+table td:last-child {
+  text-align: center;
+}
+
+table td:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+table td:last-child .btn {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+/* Barra de pesquisa */
 .search {
-  text-align: right;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.search form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--surface-soft);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search input:focus {
+  outline: none;
+  border-color: var(--lavanda-dark);
+  box-shadow: 0 0 0 3px rgba(199, 172, 224, 0.25);
+  background-color: var(--surface);
+}
+
+.search button {
+  display: inline-block;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: var(--lavanda-dark);
+  color: #FFFFFF;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.search button:focus-visible {
+  outline: 2px solid var(--lavanda-dark);
+  outline-offset: 2px;
+}
+
+/* Link "+ Novo" logo abaixo da busca (lst.ejs) */
+.search + .menu ul {
+  justify-content: flex-end;
+  margin: 0 0 20px 0;
+}
+
+.search + .menu .btn {
+  background-color: var(--rosa-forte);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  box-shadow: var(--shadow-soft);
+}
+
+.search + .menu .btn:hover {
+  background-color: var(--lavanda-dark);
+  color: #FFFFFF;
 }
 
 /* Responsivo */

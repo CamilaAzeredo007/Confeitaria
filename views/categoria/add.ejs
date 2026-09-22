@@ -1,15 +1,19 @@
 <%-include('../cabecalho.ejs')%>
 <h1>Adicionar Categoria</h1>
-<div>
-<a href="/categoria/lst">Listar</a>
+
+<div class="menu">
+    <ul>
+        <li><a href="/categoria/lst">Listar</a></li>
+    </ul>
 </div>
-<div>
-    <form  method="post">
-        <label>Nome:</label>
-        <input type="text" name="nome"><br>
-        <button type="submit">Cadastrar</button>
-        
-    </form>
-</div>
+
+<form method="post">
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
+    </div>
+
+    <button type="submit" class="btn add">Cadastrar</button>
+</form>
 
 <%-include('../rodape.ejs')%>
