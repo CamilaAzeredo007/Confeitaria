@@ -65,8 +65,8 @@ export default class ProdutoController{
     
     
             this.edt = async(req, res)=>{
-                let pcategoria = null;
-                if(req.body.time!=null)
+                let pcategoria;
+                if(req.body.categoria!=null)
                 {
                     pcategoria = await Categoria.findById(req.body.categoria)
                 }

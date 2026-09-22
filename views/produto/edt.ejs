@@ -32,9 +32,9 @@
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoria</label>
             <select name="categoria" id="categoria" class="form-control">
-                <option value="<%=Produto.categoria%>">Selecione</option>
+                <option value="">Selecione</option>
                 <%Categorias.forEach(function(c) { %>
-                    <option value="<%=c.id%>">
+                    <option value="<%=c.id%>" 
                         <%= (Produto.categoria && c.id.toString() === Produto.categoria.toString())
                          ? 'selected': '' %>
                     >
