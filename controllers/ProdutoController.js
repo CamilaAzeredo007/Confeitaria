@@ -47,7 +47,7 @@ export default class ProdutoController{
             const filtro = req.body.filtro;
             const resultado = await 
             Produto.find({ nome: { $regex: filtro,
-                    $options: "i" }})
+                    $options: "i" }}).populate('categoria')
             res.render(caminhoBase + 'lst', {Produtos:resultado})
         }
     

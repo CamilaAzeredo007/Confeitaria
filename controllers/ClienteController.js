@@ -27,7 +27,7 @@ export default class ClienteController{
         this.find = async(req, res)=>{
             const filtro = req.body.filtro;
             const resultado = await 
-            Produto.find({ nome: { $regex: filtro,
+            Cliente.find({ nome: { $regex: filtro,
                     $options: "i" }})
             res.render(caminhoBase + 'lst', {Clientes:resultado})
         }

@@ -18,15 +18,15 @@ export default class PedidoController{
             if(req.body.cliente != null){
                  pcliente = await Cliente.findById(req.body.cliente)
             }
-                await Pedido.create({
-                    nome: req.body.nome,
-                    status: req.body.status,
-                    valorTotal: req.body.valorTotal,
-                    formaPagamento: req.body.formaPagamento,
-                    dataPedido: req.body.dataPedido,
-                    cliente: pcliente
-                });
-                    res.redirect('/'+caminhoBase + 'add');
+            await Pedido.create({
+                nome: req.body.nome,
+                status: req.body.status,
+                valorTotal: req.body.valorTotal,
+                formaPagamento: req.body.formaPagamento,
+                dataPedido: req.body.dataPedido,
+                cliente: pcliente
+            });
+            res.redirect('/'+caminhoBase + 'add');
         }
 
         this.list = async(req, res)=>{
@@ -37,8 +37,8 @@ export default class PedidoController{
         this.find = async(req, res)=>{
             const filtro = req.body.filtro;
             const resultado = await 
-            Pedido.find({ status: { $regex: filtro,
-                    $options: "i" }})
+            Pedido.find({ nome: { $regex: filtro,
+                    $options: "i" }}).populate('cliente')
             res.render(caminhoBase + 'lst', {Pedidos:resultado})
         }
 
@@ -60,6 +60,7 @@ export default class PedidoController{
                  pcliente = await Cliente.findById(req.body.cliente)
             }
             await Pedido.findByIdAndUpdate(req.params.id, {
+                nome: req.body.nome,
                 status: req.body.status,
                 valorTotal: req.body.valorTotal,
                 formaPagamento: req.body.formaPagamento,
