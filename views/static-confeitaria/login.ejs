@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Confeitaria Amélie — doces artesanais feitos com afeto.">
+        <title>Entrar · Amélie</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="announcement">
+    <span>Feito à mão, para adoçar seus dias.</span>
+    <div class="font-tools" aria-label="Controles de tamanho da fonte">
+        <span>Fonte</span>
+        <button data-font-minus aria-label="Diminuir fonte">A−</button>
+        <button data-font-plus aria-label="Aumentar fonte">A+</button>
+    </div>
+</div>
+<header>
+    <a class="logo" href="index.html">amélie<span>confeitaria artesanal</span></a>
+    <nav aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="pedidos.html">Meus pedidos</a>
+    </nav>
+    <div class="header-actions">
+        <a href="login.html">Entrar</a>
+        <a class="cart-link" href="carrinho.html">Carrinho <b data-cart-count>0</b></a>
+    </div>
+</header>
+<main id="conteudo" class="static-main">
+    <section class="page narrow">
+         <span class="eyebrow">Bem-vindo de volta</span>
+         <h1>Entre na sua conta.</h1>
+         <form class="login" action="pedidos.html">
+            <label>
+                E-mail<input type="email" required placeholder="voce@email.com">
+            </label>
+            <label>
+                Senha<input type="password" required placeholder="Sua senha">
+            </label>
+            <button class="primary">Entrar</button>
+        </form>
+    </section>
+</main>
+<footer>
+    <div>
+        <strong class="footer-logo">amélie</strong>
+        <p>Pequenos doces. Grandes afetos.<br>Confeitaria artesanal feita com tempo e cuidado.</p>
+    </div>
+    <div>
+        <strong>Uma visita doce</strong>
+        <a href="catalogo.html">Catálogo de produtos</a>
+        <a href="pedidos.html">Meus pedidos</a>
+    </div>
+    <div>
+        <strong>Vamos conversar?</strong>
+        <p>oi@amelie.exemplo<br>Terça a sábado · 9h às 18h<br>São Paulo, SP</p>
+    </div>
+    <small>© 2026 Amélie · Privacidade · Termos de uso</small>
+</footer>
+<div class="toast" role="status" aria-live="polite" hidden>
+    <span aria-hidden="true">✓</span>
+    <div>
+        <strong>Adicionado ao carrinho</strong>
+        <small></small>
+    </div>
+    <a href="carrinho.html">Ver carrinho</a>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

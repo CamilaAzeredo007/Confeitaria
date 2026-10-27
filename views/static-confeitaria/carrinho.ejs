@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Confeitaria Amélie — doces artesanais feitos com afeto.">
+        <title>Carrinho · Amélie</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="announcement">
+    <span>Feito à mão, para adoçar seus dias.</span>
+    <div class="font-tools" aria-label="Controles de tamanho da fonte">
+        <span>Fonte</span>
+        <button data-font-minus aria-label="Diminuir fonte">A−</button>
+        <button data-font-plus aria-label="Aumentar fonte">A+</button>
+    </div>
+</div>
+<header>
+    <a class="logo" href="index.ejs">amélie<span>confeitaria artesanal</span></a>
+    <nav aria-label="Navegação principal"><a href="index.ejs">Início</a>
+        <a href="catalogo.ejs">Catálogo</a>
+        <a href="pedidos.ejs">Meus pedidos</a>
+    </nav>
+        <div class="header-actions">
+            <a href="login.ejs">Entrar</a>
+            <a class="cart-link" href="carrinho.ejs">Carrinho <b data-cart-count>0</b></a>
+        </div>
+    </header>
+<main id="conteudo" class="static-main">
+    <section class="page narrow">
+        <span class="eyebrow">Seu carrinho</span>
+        <h1>Uma caixa de afeto.</h1>
+        <div class="cart-list" data-cart-list></div>
+        <div class="summary" data-summary>
+            <span>Total</span><strong data-total>
+
+            </strong>
+            <a class="primary" href="pedidos.ejs">Ir para pagamento seguro</a>
+            <small>Pagamento demonstrativo · Pix ou cartão</small>
+        </div>
+    </section>
+</main>
+<footer>
+    <div>
+        <strong class="footer-logo">amélie</strong>
+        <p>Pequenos doces. Grandes afetos.<br>Confeitaria artesanal feita com tempo e cuidado.</p>
+    </div>
+    <div>
+        <strong>Uma visita doce</strong>
+        <a href="catalogo.ejs">Catálogo de produtos</a>
+        <a href="pedidos.ejs">Meus pedidos</a>
+    </div>
+    <div>
+        <strong>Vamos conversar?</strong>
+        <p>oi@amelie.exemplo<br>Terça a sábado · 9h às 18h<br>São Paulo, SP</p>
+    </div>
+    <small>© 2026 Amélie · Privacidade · Termos de uso</small>
+</footer>
+<div class="toast" role="status" aria-live="polite" hidden>
+    <span aria-hidden="true">✓</span>
+    <div>
+        <strong>Adicionado ao carrinho</strong>
+        <small></small>
+    </div>
+    <a href="carrinho.ejs">Ver carrinho</a>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
