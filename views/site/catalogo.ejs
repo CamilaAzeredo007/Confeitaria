@@ -1,0 +1,26 @@
+<%-include('../cabecalho.ejs')%>
+<main id="conteudo" class="static-main">
+    <section class="page">
+        <span class="eyebrow">O cardápio da Amélie</span>
+        <h1>Encontre seu próximo favorito.</h1>
+        <p>Receitas artesanais, pequenos lotes e muitos motivos para sorrir.</p>
+        <div class="catalog-tools">
+            <label>Pesquisar produtos
+                <input id="search" placeholder="Nome do doce">
+            </label>
+            <div class="chips" aria-label="Categorias">
+                <button class="active" data-category="Todos">Todos</button>
+                <button data-category="Bolos">Bolos</button>
+                <button data-category="Tortas">Tortas</button>
+                <button data-category="Doces">Doces</button>
+                <button data-category="Presentes">Presentes</button>
+            </div>
+        </div>
+        <div class="results">
+            <span data-results></span>
+            <span>Disponíveis para hoje</span>
+        </div>
+        <div class="product-grid" data-catalog></div>
+    </section>
+</main>
+<%-include('../rodape.ejs')%>

@@ -1,0 +1,17 @@
+<%-include('../cabecalho.ejs')%>
+<main id="conteudo" class="static-main">
+    <section class="page narrow">
+         <span class="eyebrow">Bem-vindo de volta</span>
+         <h1>Entre na sua conta.</h1>
+         <form class="login" action="/site/pedidos">
+            <label>
+                E-mail<input type="email" required placeholder="voce@email.com">
+            </label>
+            <label>
+                Senha<input type="password" required placeholder="Sua senha">
+            </label>
+            <button class="primary">Entrar</button>
+        </form>
+    </section>
+</main>
+<%-include('../rodape.ejs')%>
