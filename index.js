@@ -12,7 +12,7 @@ import PedidoRoutes from './routes/PedidoRoutes.js'; // rotas externas
 import ClienteRoutes from './routes/ClienteRoutes.js'; // rotas externas
 import SiteRoutes from './routes/SiteRoutes.js'; // rotas externas
 
-const PORT = 3000
+const PORT = 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));

@@ -8,5 +8,8 @@ const caminhobase = 'site/'
 
 router.get('/' + caminhobase, controle.home)
 router.get('/' + caminhobase + 'login', controle.login)
+router.get('/' + caminhobase + 'catalogo', controle.catalogo)
+router.get('/' + caminhobase + 'carrinho', controle.carrinho)
+router.get('/' + caminhobase + 'pedidos', controle.pedidos)
 
-export default router
+export default router;

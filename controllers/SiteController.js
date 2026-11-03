@@ -9,6 +9,17 @@ export default class SiteController {
           res.render('site/login');
         };
 
+        this.catalogo = (req, res) => {
+          res.render('site/catalogo');
+        };
+
+        this.carrinho = (req, res) => {
+          res.render('site/carrinho');
+        };
+
+        this.pedidos = (req, res) => {
+          res.render('site/pedidos');
+        };
     }
 }
 
