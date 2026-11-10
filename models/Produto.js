@@ -6,8 +6,7 @@ const Produto = conexao.Schema({
         required: true
     },
 
-    foto: {
-        type: Buffer
+     foto:{type:Buffer   
     },
 
     tipoFoto: {

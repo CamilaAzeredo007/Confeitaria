@@ -1,3 +1,6 @@
+
+import Produto from '../models/Produto.js'
+
 export default class SiteController {
  
     constructor() {
@@ -9,8 +12,9 @@ export default class SiteController {
           res.render('site/login');
         };
 
-        this.catalogo = (req, res) => {
-          res.render('site/catalogo');
+        this.catalogo = async (req, res) => {
+          const produtos =  await Produto.find()
+          res.render('site/catalogo', {Produtos: produtos});
         };
 
         this.carrinho = (req, res) => {
