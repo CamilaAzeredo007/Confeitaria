@@ -13,6 +13,8 @@ const caminhobase = 'site/'
 router.get('/' + caminhobase, controle.home)
 router.get('/' + caminhobase + 'login', controle.login)
 router.get('/' + caminhobase + 'catalogo', controle.catalogo)
+router.get('/' + caminhobase + 'catalogo/:categoria', controle.catalogoCategoria)
+router.post('/' + caminhobase + 'catalogo', controle.catalogoFiltro)
 router.post('/' + caminhobase + 'add', upload.single('foto'), controle.catalogo)
 router.get('/' + caminhobase + 'carrinho', controle.carrinho)
 router.get('/' + caminhobase + 'pedidos', controle.pedidos)

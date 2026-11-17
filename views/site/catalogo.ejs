@@ -1,50 +1,73 @@
 <%-include('cabecalho.ejs')%>
-<main id="conteudo" class="static-main">
-    <section class="page">
-        <span class="eyebrow">O cardápio da Amélie</span>
-        <h1>Encontre seu próximo favorito.</h1>
-        <p>Receitas artesanais, pequenos lotes e muitos motivos para sorrir.</p>
-        <div class="catalog-tools">
-            <label>Pesquisar produtos
-                <input id="search" placeholder="Nome do doce">
-            </label>
-            <div class="chips" aria-label="Categorias">
-                <button class="active" data-category="Todos">Todos</button>
-                <button data-category="Bolos">Bolos</button>
-                <button data-category="Tortas">Tortas</button>
-                <button data-category="Doces">Doces</button>
-                <button data-category="Presentes">Presentes</button>
+    <main id="conteudo" class="static-main">
+        <section class="page">
+            <span class="eyebrow">O cardápio da Amélie</span>
+            <h1>Encontre seu próximo favorito.</h1>
+            <p>Receitas artesanais, pequenos lotes e muitos motivos para sorrir.</p>
+            <div class="catalog-tools">
+                <div class="search">
+                    <form action="" method="post">
+                        <input type="text" name="filtro" placeholder="digite o nome do produto">
+                        <button type="submit" class="btn">Pesquisar</button>
+                    </form>
+                </div>
+                <div class="chips" aria-label="Categorias">
+
+    <!-- Botão para mostrar todos os produtos -->
+    <button
+        data-category="Todos"
+        onclick="document.location.href='/site/catalogo'">
+        Todos
+    </button>
+
+    <!-- Botões das categorias -->
+    <% Categorias.forEach(function(categoria) { %>
+
+        <button
+            data-category="<%= categoria.nome %>"
+            onclick="document.location.href='/site/catalogo/<%= categoria._id %>'">
+
+            <%= categoria.nome %>
+
+        </button>
+
+    <% }) %>
+
+</div>
             </div>
-        </div>
-        <div class="results">
-            <span data-results></span>
-            <span>Disponíveis para hoje</span>
-        </div>
-        <div class="product-grid" data-catalog></div>
-        <div class="product-grid">
+            <div class="results">
+                <span data-results></span>
+                <span>Disponíveis para hoje</span>
+            </div>
+            <div class="product-grid" data-catalog></div>
+            <div class="product-grid">
 
-          <%Produtos.forEach(function(produtos){%>
-              
-            <tr>
-              <td><%=produtos.nome%></td>
+                <% Produtos.forEach(function(produto) { %>
 
-              <td>R$ <%= Number(produtos.preco).toFixed(2).replace('.', ',') %></td>
+                    <div class="produto">
 
-              <td>
-                <% if (produtos.foto) { %>
-                    <img
-                        class="foto-thumb"
-                        src="data:<%= produtos.tipoFoto %>;base64,<%= produtos.foto.toString('base64') %>"
-                    >
-                <% } %>
-              </td>
+                        <% if (produto.foto) { %>
+                            <img class="foto-thumb"
+                                src="data:<%= produto.tipoFoto %>;base64,<%= produto.foto.toString('base64') %>">
+                            <% } %>
 
-              <td><%=produtos.categoria != null ? produtos.categoria.nome: ""%></td>
-             <br>
-            
-            </tr>   
-      </div>
-      <%})%>
-    </section>
-</main>
-<%-include('rodape.ejs')%>
+                                <h3>
+                                    <%= produto.nome %>
+                                </h3>
+
+                                <p>
+                                    R$ <%= Number(produto.preco).toFixed(2).replace('.', ',' ) %>
+                                </p>
+
+                                <p>
+                                    <%= produto.categoria ? produto.categoria.nome : "" %>
+                                </p>
+
+                    </div>
+
+                    <% }) %>
+
+            </div>
+        </section>
+    </main>
+    <%-include('rodape.ejs')%>
