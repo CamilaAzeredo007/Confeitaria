@@ -6,28 +6,26 @@
             <p>Receitas artesanais, pequenos lotes e muitos motivos para sorrir.</p>
             <div class="catalog-tools">
                 <div class="search">
-                    <form action="" method="post">
+                    <form action="/site/catalogo" method="post" >
                         <input type="text" name="filtro" placeholder="digite o nome do produto">
                         <button type="submit" class="btn">Pesquisar</button>
                     </form>
                 </div>
-                <div class="chips" aria-label="Categorias">
+<div class="chips" aria-label="Categorias">
 
-    <!-- Botão para mostrar todos os produtos -->
     <button
         data-category="Todos"
         onclick="document.location.href='/site/catalogo'">
         Todos
     </button>
 
-    <!-- Botões das categorias -->
     <% Categorias.forEach(function(categoria) { %>
 
         <button
-            data-category="<%= categoria.nome %>"
-            onclick="document.location.href='/site/catalogo/<%= categoria._id %>'">
+            data-category="<%=categoria.nome%>"
+            onclick="document.location.href='/site/catalogo/<%=categoria._id%>'">
 
-            <%= categoria.nome %>
+            <%=categoria.nome%>
 
         </button>
 
@@ -47,7 +45,7 @@
                     <div class="produto">
 
                         <% if (produto.foto) { %>
-                            <img class="foto-thumb"
+                            <img class="foto-thumb" width="290" height="225"
                                 src="data:<%= produto.tipoFoto %>;base64,<%= produto.foto.toString('base64') %>">
                             <% } %>
 
@@ -65,9 +63,9 @@
 
                     </div>
 
-                    <% }) %>
+                <% }) %>
 
             </div>
         </section>
-    </main>
-    <%-include('rodape.ejs')%>
+</main>
+<%-include('rodape.ejs')%>

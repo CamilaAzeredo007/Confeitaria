@@ -13,7 +13,7 @@ export default class SiteController {
         };
 
         this.catalogo = async (req, res) => {
-          const produtos =  await Produto.find({});
+          const produtos =  await Produto.find({}).populate('categoria');
           const categorias = await Categoria.find({})        
           res.render('site/catalogo', {Produtos: produtos, Categorias: categorias});
         };
@@ -27,14 +27,12 @@ export default class SiteController {
         };
 
         this.catalogoCategoria = async (req, res) => {
-          const categoria = req.params.categoria;
-
-          const produtos = await Produto.find({
-           categoria: categoria
-          });
+          const filtroCategoria = req.params.categoria;
+          //tu recebeu o id da categoria ... tem q filtrar os produtos q tem essa categoria
+          const produtos = await Produto.find({categoria: filtroCategoria}).populate('categoria')
 
           const categorias = await Categoria.find({})        
-          res.render('site/catalogo/:categoria', {Produtos: produtos, 
+          res.render('site/catalogo', {Produtos: produtos, 
             Categorias: categorias});
         };
 
