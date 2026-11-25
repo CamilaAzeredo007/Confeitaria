@@ -11,6 +11,7 @@ import ProdutoRoutes from './routes/ProdutoRoutes.js'; // rotas externas
 import PedidoRoutes from './routes/PedidoRoutes.js'; // rotas externas
 import ClienteRoutes from './routes/ClienteRoutes.js'; // rotas externas
 import SiteRoutes from './routes/SiteRoutes.js'; // rotas externas
+import UsuarioRoutes from './routes/UsuarioRoutes.js'; // rotas externas
 
 const PORT = 3001;
 const app = express();
@@ -33,6 +34,7 @@ app.use(ProdutoRoutes)
 app.use(PedidoRoutes)
 app.use(ClienteRoutes)
 app.use(SiteRoutes)
+app.use(UsuarioRoutes)
 app.use(routes)
 app.listen(PORT, ()=>{
  console.log(

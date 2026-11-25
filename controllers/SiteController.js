@@ -12,6 +12,10 @@ export default class SiteController {
           res.render('site/login');
         };
 
+        this.cadastro = (req, res) => {
+          res.render('site/cadastro');
+        };
+
         this.catalogo = async (req, res) => {
           const produtos =  await Produto.find({}).populate('categoria');
           const categorias = await Categoria.find({})        
